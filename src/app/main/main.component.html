@@ -1,0 +1,32 @@
+<div class="row mt-4 ">
+  <div class="text-center">
+    <form [formGroup]="animeForm" class="mb-4" (ngSubmit)="searchAnime()">
+        <input type="text" class="form-control"  formControlName="name" placeholder="Search...">
+        <button class="btn btn-outline-primary mt-3" [disabled]="animeForm.invalid" type="submit">Button</button>
+    </form>
+  </div>
+  
+  <div class="card m-2" style="width: 18rem;" *ngFor="let anime of animeList">
+    <img src="{{ anime.image_url }}" width="500" height="300" class="card-img-top" alt="{{ anime.title }}">
+    <div class="card-body">
+      <div class="text-end">
+        <span [ngClass]="{'bg-success': anime.score <= 8, 'bg-primary': anime.score > 5,  'bg-danger': anime.score < 5}" class="badge text-end" >{{ anime.score }}</span>
+      </div>
+      <h5 class="card-title text-center">{{ anime.title }} </h5>
+      <p class="card-text">{{ anime.synopsis }}</p>
+    </div>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item text-center">Episodios: {{ anime.episodes }}</li>
+      <li class="list-group-item text-center">Rating: {{ anime.rated }}</li>
+      <li class="list-group-item text-center">
+        <a class="btn btn-primary" target="_blank" href="{{ anime.url}}">See more</a>
+      </li>
+    </ul>
+
+    <div class="card-footer text-center">
+      <small class="text-muted">{{ anime.start_date | date:"longDate" }}</small>
+    </div>
+  </div>
+
+</div>
