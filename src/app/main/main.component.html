@@ -10,7 +10,7 @@
     <img src="{{ anime.image_url }}" width="500" height="300" class="card-img-top" alt="{{ anime.title }}">
     <div class="card-body">
       <div class="text-end">
-        <span [ngClass]="{'bg-success': anime.score <= 8, 'bg-primary': anime.score > 5,  'bg-danger': anime.score < 5}" class="badge text-end" >{{ anime.score }}</span>
+        <span [ngClass]="{'bg-success': anime.score >= 8, 'bg-warning': anime.score >= 5 && anime.score < 8,  'bg-danger': anime.score < 5}" class="badge text-end" >{{ anime.score }}</span>
       </div>
       <h5 class="card-title text-center">{{ anime.title }} </h5>
       <p class="card-text">{{ anime.synopsis }}</p>
