@@ -11,11 +11,12 @@ export class JikanService {
 
   constructor( private http: HttpClient) { }
 
-
   getAnime( name: string): Observable<Anime> {
-    return this.http.get<Anime>(`${environment.URL_API}${name}`);
+    return this.http.get<Anime>(`${ environment.URL_API }search/anime?q=${ name }`);
   }
 
-
+  getEpisodes( id: number): Observable<any> {
+    return this.http.get<Anime>(`${ environment.URL_API }anime/${ id }/episodes`);
+  }
 
 }
